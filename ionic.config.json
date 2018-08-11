@@ -1,0 +1,8 @@
+{
+  "name": "fridge-monitor",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "a96ed8e6"
+}
