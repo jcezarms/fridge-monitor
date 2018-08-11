@@ -11,6 +11,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AngularFireModule } from "angularfire2";
+import { keys } from '../config/firebase';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -26,7 +29,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
       iconMode: 'ios',
       pageTransition: 'ios-transition',
       tabsPlacement: 'bottom'
-    })
+    }),
+    AngularFireModule.initializeApp(keys)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
