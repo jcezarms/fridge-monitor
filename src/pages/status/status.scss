@@ -1,3 +1,38 @@
 page-status {
+    .status-containter {
+        height: 55vh;
+        width: 100vw;
+        background-image: url('../../assets/imgs/status-fruits.jpeg');
+        background-size: 100% 140%;
+        background-repeat: no-repeat;
+    }
 
+    .status-text {
+        text-align: center;
+    }
+
+    .snowflake {
+        font-size: 5vh;
+    }
+
+    @mixin status-bar($color) {
+        align-items: center;
+        height: 8vh;
+        width: 100vw;
+        background-color: color($colors, $color);
+    }
+
+    .red-bar {
+        @include status-bar(danger);
+    }
+
+    .green-bar {
+        @include status-bar(secondary);
+    }
+
+    div.scroll-content {
+        padding-top: 0px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
 }

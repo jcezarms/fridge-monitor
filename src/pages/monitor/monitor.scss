@@ -30,14 +30,19 @@ page-monitor {
         padding-top: 3vh;
     }
     
-    .item-count {
+    %padless-column {
+        padding-top: 0px;
         text-align: center;
+    }
+
+    .item-count {
+        @extend %padless-column;
         color: #29b299;
         font-size: 6vh;
     }
     
     .item-count-title {
-        text-align: center;
+        @extend %padless-column;
         font-style: italic;
         color: lightgray;
     }
