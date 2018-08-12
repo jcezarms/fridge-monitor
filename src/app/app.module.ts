@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from "angularfire2";
 import { keys } from '../config/firebase';
+import { GlobalStateProvider } from '../providers/global-state/global-state';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { keys } from '../config/firebase';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GlobalStateProvider
   ]
 })
 export class AppModule {}

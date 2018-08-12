@@ -1,3 +1,38 @@
 page-monitor {
+    .strongly-greyed {
+        color: grey;
+        // font-weight: bold;
+    }
 
+    @mixin opaque-checkbox($color) {
+        opacity: .8 !important;
+        .checkbox-icon {
+            border-color: map-get($colors, $color)
+        }
+    }
+
+    .normalized-item {
+        @include opaque-checkbox(secondary);
+        .checkbox-icon {
+            background-color: color($colors, secondary)
+        }
+    }
+
+    .missing-item {
+        @include opaque-checkbox(danger)
+    }
+
+    .extra-item {
+        @include opaque-checkbox(primary)
+    }
+    
+    .item-count {
+        text-align: center;
+    }
+    
+    .item-count-title {
+        text-align: center;
+        font-style: italic;
+        color: lightgray;
+    }
 }

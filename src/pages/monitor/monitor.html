@@ -7,5 +7,61 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="filterSet; else nada">
+    <ion-row align-items-center>
+      <ion-col class="item-count">{{storageItemCount}}/{{filterItemCount}}</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="item-count-title">ITENS</ion-col>
+    </ion-row>
 
+    <div *ngIf="itemsMeetingFilter.length > 0">
+      <div class="strongly-greyed">
+        Abastecidos:
+      </div>
+      <div *ngFor="let item of items">
+        <ion-row *ngIf="item.stored == item.filterCount">
+            <ion-col col-10>
+              <span class="strongly-greyed">{{item.name}}</span>: {{item.unityForQuantity(item.stored)}}</ion-col>
+            <ion-col col-2>
+              <ion-checkbox class="normalized-item" checked="true" disabled="true"></ion-checkbox>
+            </ion-col>
+          </ion-row>
+      </div>
+    </div>
+
+    <div *ngIf="itemsExceedingFilter.length > 0">
+      <div class="strongly-greyed">
+        Estoque Excedente:
+      </div>
+      <div *ngFor="let item of items">
+        <ion-row *ngIf="item.stored > item.filterCount">
+            <ion-col col-10>
+              <span class="strongly-greyed">{{item.name}}</span>: {{item.unityForQuantity(item.stored - item.filterCount)}}</ion-col>
+            <ion-col col-2>
+              <ion-checkbox class="extra-item" checked="true" disabled="true"></ion-checkbox>
+            </ion-col>
+          </ion-row>
+      </div>
+    </div>
+
+    <div *ngIf="itemsUnderFilter.length > 0">
+      <div class="strongly-greyed">
+        Faltando para Abastecimento Ideal:
+      </div>
+      <div *ngFor="let item of items">
+        <ion-row *ngIf="item.stored < item.filterCount">
+          <ion-col col-10>
+            <span class="strongly-greyed">{{item.name}}</span>: {{item.unityForQuantity(item.filterCount - item.stored)}}</ion-col>
+          <ion-col col-2>
+            <ion-checkbox class="missing-item" checked="false" disabled="true"></ion-checkbox>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #nada>
+    <ion-item>Você ainda não configurou nenhum filtro!</ion-item>
+  </ng-template>
 </ion-content>
