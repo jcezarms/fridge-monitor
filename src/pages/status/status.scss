@@ -35,6 +35,27 @@ page-status {
         @include status-bar(secondary, black);
     }
 
+    .temperature-container {
+
+        background-color: darkslategray;
+        height: 20vh;
+        padding-top: 5vh;
+        color: white;
+
+        .fridge-part-name {
+            -ms-flex-item-align: auto;
+        }
+
+        .dash {
+            -ms-flex-item-align: auto;
+        }
+
+        .fridge-part-temperature {
+            -ms-flex-item-align: auto;
+        }
+
+    }
+
     div.scroll-content {
         padding-top: 0px !important;
         padding-left: 0px !important;
