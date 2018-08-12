@@ -46,4 +46,25 @@ page-monitor {
         font-style: italic;
         color: lightgray;
     }
+
+    .nada-text {
+        text-align: center;
+        margin-top: 1vh;
+        margin-bottom: 3vh;
+        border-radius: 5%;
+    }
+
+    .nada-image-eaten {
+        background-image: url('../../assets/imgs/eaten.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 5vh;
+        margin-left: 10vw;
+        height: 38vh;
+    }
+
+    .config-button {
+        background-color: seagreen;
+        margin-left: 26vw !important;
+    }
 }

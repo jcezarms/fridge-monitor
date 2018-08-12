@@ -12,8 +12,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { keys } from '../config/firebase';
 import { GlobalStateProvider } from '../providers/global-state/global-state';
+
+import { SelectSearchableModule } from 'ionic-select-searchable';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,10 @@ import { GlobalStateProvider } from '../providers/global-state/global-state';
       pageTransition: 'ios-transition',
       tabsPlacement: 'bottom'
     }),
-    AngularFireModule.initializeApp(keys)
+    AngularFireModule.initializeApp(keys),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    SelectSearchableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,8 +51,8 @@ import { GlobalStateProvider } from '../providers/global-state/global-state';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     GlobalStateProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

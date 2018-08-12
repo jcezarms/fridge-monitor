@@ -22,6 +22,11 @@
     :not(ion-icon) {
         font-family: 'Google Sans'
     }
+
+    .loading {
+        background-image: url(../../assets/imgs/fridge.gif);
+        z-index: 10;
+    }
     
     ion-navbar {
         text-align: center;

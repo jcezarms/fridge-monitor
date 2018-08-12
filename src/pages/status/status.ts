@@ -12,11 +12,10 @@ export class StatusPage {
   fridge: FridgePart;
 
   constructor(public navCtrl: NavController, public globals: GlobalStateProvider) {
-    this.fridge = this.mockFridge();
-  }
-
-  mockFridge(): FridgePart {
-    return new FridgePart(true, "geladeira", 75);
+    globals.getFridge().subscribe(fbFridge => {
+      this.fridge = new FridgePart(fbFridge, "geladeira");
+      console.log({ 'received': fbFridge, 'persisted': this.fridge });
+    });
   }
 
 }

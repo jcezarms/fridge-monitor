@@ -6,7 +6,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content  [class]="items ? 'loaded' : 'loading'" padding>
   <div *ngIf="filterSet; else nada">
     <ion-row align-items-center>
       <ion-col class="item-count">
@@ -64,6 +64,15 @@
   </div>
 
   <ng-template #nada>
-    <ion-item>Você ainda não configurou nenhum filtro!</ion-item>
+    <div class="nada-image-eaten"></div>
+    <div class="nada-text">
+      <ion-row>
+        <ion-col>Não há nada aqui...</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Você ainda não configurou nenhum filtro!</ion-col>
+      </ion-row>
+    </div>
+    <button class="config-button" ion-button color="dark" (click)="configure()">Configurar</button>
   </ng-template>
 </ion-content>

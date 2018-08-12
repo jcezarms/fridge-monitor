@@ -4,21 +4,23 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div class="status-containter"></div>
-  <div [class]="fridge.open ? 'red-bar' : 'green-bar'">
-    <ion-col class="status-text">{{ fridge.status }}</ion-col>
-    <ion-col class="snowflake">
-      <ion-icon name="snow"></ion-icon>
-    </ion-col>
-  </div>
-  <div class="temperature-container">
-    <ion-col class="fridge-part-name">
-      {{ fridge.name | titlecase }}
-    </ion-col>
-    <ion-col class="dash"> – </ion-col>
-    <ion-col class="fridge-part-temperature">
-      {{ fridge.temperature }} °C
-    </ion-col>
+<ion-content [class]="fridge && fridge.name ? 'loaded' : 'loading'">
+  <div *ngIf="fridge">
+    <div class="status-containter"></div>
+    <div [class]="fridge.open ? 'red-bar' : 'green-bar'">
+      <ion-col class="status-text">{{ fridge.status }}</ion-col>
+      <ion-col class="snowflake">
+        <ion-icon name="snow"></ion-icon>
+      </ion-col>
+    </div>
+    <div class="temperature-container">
+      <ion-col class="fridge-part-name">
+        {{ fridge.name | titlecase }}
+      </ion-col>
+      <ion-col class="dash"> – </ion-col>
+      <ion-col class="fridge-part-temperature">
+        {{ fridge.temperature }} °C
+      </ion-col>
+    </div>
   </div>
 </ion-content>

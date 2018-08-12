@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Tabs } from 'ionic-angular';
 import { Item } from '../../models/item.model';
 import { GlobalStateProvider } from '../../providers/global-state/global-state';
 
@@ -9,23 +9,29 @@ import { GlobalStateProvider } from '../../providers/global-state/global-state';
   providers: [GlobalStateProvider]
 })
 export class FridgeMonitorPage {
-  filterSet: boolean;
   items: Item[] = new Array<Item>();
 
   constructor(public navCtrl: NavController, public globals: GlobalStateProvider) {
-    this.mockItem();
+    // this.mockItem();
+    this.itemsSubscription();
   }
 
-  mockItem(): void {
-    let item: Item = new Item("Leite", "caixa", 4, 3);
-    let item2: Item = new Item("Carne", "pacote", 4, 5);
-    let item3: Item = new Item("Arroz", "pacote", 4, 4)
-    
-    this.items.push(item);
-    this.items.push(item2);
-    this.items.push(item3);
-    
-    this.filterSet = true;
+  itemsSubscription() {
+    this.globals.getItems().subscribe(items => {
+
+      this.items = items;
+      console.log(items);
+
+    });
+  }
+
+  get filterSet(): boolean {
+    return this.items && this.items.length > 0;
+  }
+
+  configure() {
+    let t: Tabs = this.navCtrl.parent;
+    t.select(2);
   }
 
   get itemsExceedingFilter(): Item[] {

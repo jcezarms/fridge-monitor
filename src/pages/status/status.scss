@@ -38,20 +38,23 @@ page-status {
     .temperature-container {
 
         background-color: darkslategray;
-        height: 20vh;
+        height: 15vh;
         padding-top: 5vh;
         color: white;
 
-        .fridge-part-name {
-            -ms-flex-item-align: auto;
+        @mixin temp-bloc() {
+            background-color: black;
+            border-radius: 10%;
         }
 
-        .dash {
-            -ms-flex-item-align: auto;
+        .fridge-part-name {
+            @include temp-bloc();
+            margin-left: 30vw;
         }
+
 
         .fridge-part-temperature {
-            -ms-flex-item-align: auto;
+            @include temp-bloc();
         }
 
     }

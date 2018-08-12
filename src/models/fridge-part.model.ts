@@ -1,12 +1,14 @@
+import { FridgePartFirebase } from "./fridge-part-firebase";
+
 export class FridgePart {
     open: boolean;
     name: "geladeira" | "freezer";
     temperature: number;
 
-    constructor(open: boolean, name: "geladeira" | "freezer", temperature: number) {
-        this.open = open;
+    constructor(fbFridge: FridgePartFirebase, name: "geladeira" | "freezer") {
+        this.open = fbFridge.open;
+        this.temperature = fbFridge.temperature;
         this.name = name;
-        this.temperature = temperature;
     }
 
     get status(): string {
