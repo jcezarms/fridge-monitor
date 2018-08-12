@@ -9,7 +9,9 @@
 <ion-content padding>
   <div *ngIf="filterSet; else nada">
     <ion-row align-items-center>
-      <ion-col class="item-count">{{storageItemCount}}/{{filterItemCount}}</ion-col>
+      <ion-col class="item-count">
+        {{storageItemCount}}/{{filterItemCount}}
+      </ion-col>
     </ion-row>
     <ion-row align-items-center>
       <ion-col class="item-count-title">ITENS</ion-col>
@@ -20,9 +22,9 @@
         Abastecido:
       </div>
       <div *ngFor="let item of items">
-        <ion-row *ngIf="item.stored == item.filterCount">
+        <ion-row *ngIf="item.stored >= 1">
             <ion-col col-10>
-              <span class="strongly-greyed">{{item.name}}</span>: {{item.unityForQuantity(item.stored)}}</ion-col>
+              <span class="strongly-greyed">{{item.name}}</span>: {{item.stored > item.filterCount ? item.unityForQuantity(item.filterCount) : item.unityForQuantity(item.stored)}}</ion-col>
             <ion-col col-2>
               <ion-checkbox class="normalized-item" checked="true" disabled="true"></ion-checkbox>
             </ion-col>
@@ -30,7 +32,7 @@
       </div>
     </div>
 
-    <div *ngIf="itemsExceedingFilter.length > 0">
+    <div class="food-block" *ngIf="itemsExceedingFilter.length > 0">
       <div class="strongly-greyed">
         Estoque Excedente:
       </div>
@@ -45,7 +47,7 @@
       </div>
     </div>
 
-    <div *ngIf="itemsUnderFilter.length > 0">
+    <div class="food-block" *ngIf="itemsUnderFilter.length > 0">
       <div class="strongly-greyed">
         Faltando para Abastecimento Ideal:
       </div>

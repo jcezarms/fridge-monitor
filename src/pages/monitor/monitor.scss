@@ -25,9 +25,15 @@ page-monitor {
     .extra-item {
         @include opaque-checkbox(primary)
     }
+
+    .food-block {
+        padding-top: 3vh;
+    }
     
     .item-count {
         text-align: center;
+        color: #29b299;
+        font-size: 6vh;
     }
     
     .item-count-title {
