@@ -10,15 +10,12 @@ export class FridgePart {
     }
 
     get status(): string {
-        let statusStr = "";
         switch (this.name) {
             case "geladeira": {
-                statusStr += `Sua ${this.name} está `;
-                return statusStr + (this.open ? "aberta" : "fechada");
+                return `Sua ${this.name} está ${this.open ? 'aberta' : 'fechada'}`;
             }
             case "freezer": {
-                statusStr += `Seu ${this.name} está `;
-                return statusStr + (this.open ? "aberto" : "fechado");
+                return `Seu ${this.name} está ${this.open ? 'aberto' : 'fechado'}`;
             }
         }
     }
