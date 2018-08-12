@@ -9,25 +9,30 @@ page-status {
 
     .status-text {
         text-align: center;
+        position: absolute;
+        left: 0vw;
+        margin-top: 1vh;
     }
 
     .snowflake {
         font-size: 5vh;
+        position: absolute;
+        left: 85vw;
     }
 
-    @mixin status-bar($color) {
+    @mixin status-bar($background, $text) {
         align-items: center;
         height: 8vh;
-        width: 100vw;
-        background-color: color($colors, $color);
+        background-color: color($colors, $background);
+        color: $text;
     }
 
     .red-bar {
-        @include status-bar(danger);
+        @include status-bar(danger, white);
     }
 
     .green-bar {
-        @include status-bar(secondary);
+        @include status-bar(secondary, black);
     }
 
     div.scroll-content {
