@@ -16,6 +16,7 @@ export class FilterPage {
   selectItem: Item = null;
 
   constructor(public navCtrl: NavController, public globals: GlobalStateProvider, public groceryProvider: GroceryProvider) {
+    this.itemsSubscription();
     this.defaultItems = groceryProvider.getDefaultGroceryList();
   }
   
@@ -25,10 +26,8 @@ export class FilterPage {
 
   itemsSubscription() {
     this.globals.getItems().subscribe(items => {
-
-      this.items = items;
-      console.log(items);
-      
+      console.log({ 'filter': items });
+      this.items = items.map(item => new Item(item));
     });
   }
 

@@ -8,17 +8,22 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Configurações de Abastecimento</ion-list-header>
-    <ion-item-sliding *ngFor="let item of items">
-      
-      {{item.name}} - {{storedFilterComparison(item)}}
+    <div *ngIf="items && items.length > 0">
+      <ion-list-header>Configurações de Abastecimento</ion-list-header>
+      <ion-item-sliding *ngFor="let item of items">
 
-      <ion-item-options>
-          <button danger (click)="removeItem(item)"><ion-icon name="trash"></ion-icon> Deletar</button>
-      </ion-item-options>
+        <ion-item>
+            {{item.name}} - {{storedFilterComparison(item)}}
+        </ion-item>
 
-    </ion-item-sliding>
-
+          <ion-item-options side="right">
+              <button class="button-delete" (click)="removeItem(item)">
+                <ion-icon name="trash"></ion-icon>
+                Deletar
+              </button>
+          </ion-item-options>
+      </ion-item-sliding>
+    </div>
   </ion-list>
   <ion-item>
     <ion-label>Nome do alimento</ion-label>

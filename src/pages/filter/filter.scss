@@ -4,4 +4,9 @@ page-filter {
         margin-top: 3vh;
         margin-left: 25vw;
     }
+
+    .button-delete {
+        background-color: color($colors, danger);
+        color: white;
+    }
 }

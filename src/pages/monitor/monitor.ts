@@ -12,17 +12,12 @@ export class FridgeMonitorPage {
   items: Item[] = new Array<Item>();
 
   constructor(public navCtrl: NavController, public globals: GlobalStateProvider) {
-    // this.mockItem();
     this.itemsSubscription();
   }
 
   itemsSubscription() {
     this.globals.getItems().subscribe(items => {
-
       this.items = items.map(item => new Item(item));
-      console.log(items);
-      console.log(this.items);
-
     });
   }
 
