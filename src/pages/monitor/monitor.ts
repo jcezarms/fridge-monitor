@@ -59,7 +59,7 @@ export class FridgeMonitorPage {
   }
 
   unityForQuantity(item: Item, quantity: number): string {
-    return quantity + (quantity <= 1 ? ` ${item.unity}` : ` ${item.unity}s`)
-}
+    return this.globals.unityForQuantity(item, quantity);
+  }
 
 }

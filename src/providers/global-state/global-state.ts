@@ -43,4 +43,12 @@ export class GlobalStateProvider {
     });
   }
 
+  unityForQuantity(item: Item, quantity: number): string {
+    return quantity + (quantity <= 1 ? ` ${item.unity}` : ` ${item.unity}s`);
+  }
+
+  storedFilterComparison(item: Item): string {
+    return `${item.stored ? item.stored : 0}/${item.filterCount} ${item.unity}s`;
+  }
+
 }

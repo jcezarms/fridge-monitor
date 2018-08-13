@@ -52,4 +52,8 @@ export class FilterPage {
     }
   }
 
+  storedFilterComparison(item: Item): string {
+    return this.globals.storedFilterComparison(item);
+  }
+
 }

@@ -11,7 +11,7 @@
     <ion-list-header>Configurações de Abastecimento</ion-list-header>
     <ion-item-sliding *ngFor="let item of items">
       
-      <!-- {{}} -->
+      {{item.name}} - {{storedFilterComparison(item)}}
 
       <ion-item-options>
           <button danger (click)="removeItem(item)"><ion-icon name="trash"></ion-icon> Deletar</button>
