@@ -4,20 +4,23 @@ import { GlobalStateProvider } from '../../providers/global-state/global-state';
 
 import { SelectSearchableComponent } from 'ionic-select-searchable';
 import { Item } from '../../models/item.model';
+import { GroceryProvider } from '../../providers/grocery/grocery';
 @Component({
   selector: 'page-filter',
   templateUrl: 'filter.html',
   providers: [GlobalStateProvider]
 })
 export class FilterPage {
-  items: Item[] = new Array<Items>();
+  items: Item[] = new Array<Item>();
+  defaultItems: Item[] = [];
+  selectItem: Item = null;
 
-  constructor(public navCtrl: NavController, public globals: GlobalStateProvider) {
-    this.mockItems();
+  constructor(public navCtrl: NavController, public globals: GlobalStateProvider, public groceryProvider: GroceryProvider) {
+    this.defaultItems = groceryProvider.getDefaultGroceryList();
   }
-
+  
   itemChanged(event: { component: SelectSearchableComponent, value: Item}) {
-    // Item was selected
+    console.log(event);
   }
 
   itemsSubscription() {
@@ -29,14 +32,24 @@ export class FilterPage {
     });
   }
 
-  mockItems(): void {
-    let item: Item = new Item("Leite", "caixa", 4, 3);
-    let item2: Item = new Item("Carne", "pacote", 4, 5);
-    let item3: Item = new Item("Arroz", "pacote", 4, 4)
-    
-    this.items.push(item);
-    this.items.push(item2);
-    this.items.push(item3);
+  removeItem(item: Item) {
+    this.globals.deleteItem(item);
+  }
+
+  addCurrentItem() {
+    this.globals.saveItem(this.selectItem);
+    this.selectItem = null;
+  }
+
+  getSelectedItemLabel() {
+    switch (this.selectItem.unity) {
+      case "pacote":
+      return `Quantos ${this.selectItem.unity}s?`
+      case "caixa":
+      case "garrafa":
+      default:
+        return `Quantas ${this.selectItem.unity}s?`
+    }
   }
 
 }

@@ -9,8 +9,40 @@
 <ion-content>
   <ion-list>
     <ion-list-header>Configurações de Abastecimento</ion-list-header>
-    <ion-item>
-      @me
-    </ion-item>
+    <ion-item-sliding *ngFor="let item of items">
+      
+      <!-- {{}} -->
+
+      <ion-item-options>
+          <button danger (click)="removeItem(item)"><ion-icon name="trash"></ion-icon> Deletar</button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
   </ion-list>
+  <ion-item>
+    <ion-label>Nome do alimento</ion-label>
+      <select-searchable
+        item-content
+        [(ngModel)]="selectItem"
+        [items]="defaultItems"
+        itemValueField="name"
+        itemTextField="name"
+        [searchFailText]="'Alimento não encontrado.'"
+        [canSearch]="true"
+        (onChange)="itemChanged($event)">
+      </select-searchable>
+  </ion-item>
+  <ion-item *ngIf="selectItem">
+    <ion-label>{{getSelectedItemLabel()}}</ion-label>
+    <ion-input item-right type="number" min="1" pattern="[0-9]*" [(ngModel)]="selectItem.filterCount"></ion-input>
+  </ion-item>
+  <button
+    [disabled]="!selectItem || !selectItem.filterCount"
+    (click)="addCurrentItem()"
+    ion-button
+    class="button-add-item">
+    Adicionar item
+  </button>
+  
 </ion-content>

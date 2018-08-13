@@ -11,7 +11,4 @@ export class Item {
         this.stored = stored;
     }
 
-    unityForQuantity(quantity: number): string {
-        return quantity + (quantity <= 1 ? ` ${this.unity}` : ` ${this.unity}s`)
-    }
 }

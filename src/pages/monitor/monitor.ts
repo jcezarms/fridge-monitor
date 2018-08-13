@@ -58,4 +58,8 @@ export class FridgeMonitorPage {
     return count;
   }
 
+  unityForQuantity(item: Item, quantity: number): string {
+    return quantity + (quantity <= 1 ? ` ${item.unity}` : ` ${item.unity}s`)
+}
+
 }

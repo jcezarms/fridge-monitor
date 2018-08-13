@@ -18,6 +18,7 @@ import { keys } from '../config/firebase';
 import { GlobalStateProvider } from '../providers/global-state/global-state';
 
 import { SelectSearchableModule } from 'ionic-select-searchable';
+import { GroceryProvider } from '../providers/grocery/grocery';
 
 @NgModule({
   declarations: [
@@ -35,10 +36,10 @@ import { SelectSearchableModule } from 'ionic-select-searchable';
       pageTransition: 'ios-transition',
       tabsPlacement: 'bottom'
     }),
+    SelectSearchableModule,
     AngularFireModule.initializeApp(keys),
     AngularFireDatabaseModule,
-    AngularFirestoreModule,
-    SelectSearchableModule
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +53,8 @@ import { SelectSearchableModule } from 'ionic-select-searchable';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    GlobalStateProvider
+    GlobalStateProvider,
+    GroceryProvider
   ]
 })
 export class AppModule { }

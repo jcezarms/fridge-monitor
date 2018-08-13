@@ -28,7 +28,19 @@ export class GlobalStateProvider {
   }
 
   saveItem(item: Item) {
-    this.items.doc(item.name).set(item);
+    this.items.doc(item.name).set(item).then(() => {
+      console.log('Successful saving.');
+    }, err => {
+      console.error('Error trying to save: ', err);
+    });
+  }
+
+  deleteItem(item: Item) {
+    this.items.doc(item.name).delete().then(() => {
+      console.log('Successful deletion.');
+    }, err => {
+      console.error('Error trying to delete: ', err);
+    });
   }
 
 }
