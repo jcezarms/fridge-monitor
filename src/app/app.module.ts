@@ -38,8 +38,7 @@ import { GroceryProvider } from '../providers/grocery/grocery';
     }),
     SelectSearchableModule,
     AngularFireModule.initializeApp(keys),
-    AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

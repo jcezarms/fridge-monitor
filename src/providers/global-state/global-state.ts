@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireObject } from "angularfire2/database";
-import {
-  AngularFirestore,
-  AngularFirestoreCollection
-} from 'angularfire2/firestore';
+import { AngularFireDatabase, AngularFireObject, AngularFireList } from "angularfire2/database";
 import { FridgePartFirebase } from '../../models/fridge-part-firebase';
 import { Observable } from 'rxjs';
 import { Item } from '../../models/item.model';
@@ -12,11 +8,11 @@ import { Item } from '../../models/item.model';
 export class GlobalStateProvider {
 
   fridge: AngularFireObject<FridgePartFirebase>;
-  items: AngularFirestoreCollection<Item>;
+  items: AngularFireList<Item>;
 
-  constructor(private afDb: AngularFireDatabase, private afs: AngularFirestore) {
+  constructor(private afDb: AngularFireDatabase) {
     this.fridge = this.afDb.object<FridgePartFirebase>('fridge');
-    this.items = afs.collection<Item>('items');
+    this.items = this.afDb.list<Item>('items');
   }
 
   getFridge(): Observable<FridgePartFirebase> {
@@ -28,7 +24,7 @@ export class GlobalStateProvider {
   }
 
   saveItem(item: Item) {
-    this.items.doc(item.name).set(item).then(() => {
+    this.items.set(item.name, item).then(() => {
       console.log('Successful saving.');
     }, err => {
       console.error('Error trying to save: ', err);
@@ -36,7 +32,7 @@ export class GlobalStateProvider {
   }
 
   deleteItem(item: Item) {
-    this.items.doc(item.name).delete().then(() => {
+    this.items.remove(item.name).then(() => {
       console.log('Successful deletion.');
     }, err => {
       console.error('Error trying to delete: ', err);

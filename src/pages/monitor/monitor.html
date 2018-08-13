@@ -24,8 +24,8 @@
       <div *ngFor="let item of items">
         <ion-row *ngIf="item.stored >= 1">
           <ion-col col-10>
-            <span class="strongly-greyed">{{item.name}}</span>: {{ item.stored > item.filterCount ? unityForQuantity(item, item.filterCount) : unityForQuantity(item,
-            item.stored) }}</ion-col>
+            <span class="strongly-greyed">{{item.name}}</span>: {{ +item.stored > +item.filterCount ? unityForQuantity(item, +item.filterCount) : unityForQuantity(item,
+            +item.stored) }}</ion-col>
           <ion-col col-2>
             <ion-checkbox class="normalized-item" checked="true" disabled="true"></ion-checkbox>
           </ion-col>
@@ -40,7 +40,7 @@
       <div *ngFor="let item of items">
         <ion-row *ngIf="item.stored > item.filterCount">
           <ion-col col-10>
-            <span class="strongly-greyed">{{item.name}}</span>: {{ unityForQuantity(item, item.stored - item.filterCount) }}</ion-col>
+            <span class="strongly-greyed">{{item.name}}</span>: {{ unityForQuantity(item, +item.stored - +item.filterCount) }}</ion-col>
           <ion-col col-2>
             <ion-checkbox class="extra-item" checked="true" disabled="true"></ion-checkbox>
           </ion-col>
@@ -55,7 +55,7 @@
       <div *ngFor="let item of items">
         <ion-row *ngIf="item.stored < item.filterCount">
           <ion-col col-10>
-            <span class="strongly-greyed">{{item.name}}</span>: {{ unityForQuantity(item, item.filterCount - item.stored) }}</ion-col>
+            <span class="strongly-greyed">{{item.name}}</span>: {{ unityForQuantity(item, +item.filterCount - +item.stored) }}</ion-col>
           <ion-col col-2>
             <ion-checkbox class="missing-item" checked="false" disabled="true"></ion-checkbox>
           </ion-col>

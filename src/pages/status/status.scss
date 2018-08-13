@@ -1,4 +1,8 @@
 page-status {
+    .scroll-content {
+        overflow-y: hidden !important;
+    }
+    
     .status-containter {
         height: 55vh;
         width: 100vw;

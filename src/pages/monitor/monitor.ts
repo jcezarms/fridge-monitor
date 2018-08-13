@@ -19,8 +19,9 @@ export class FridgeMonitorPage {
   itemsSubscription() {
     this.globals.getItems().subscribe(items => {
 
-      this.items = items;
+      this.items = items.map(item => new Item(item));
       console.log(items);
+      console.log(this.items);
 
     });
   }
