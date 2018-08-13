@@ -1,7 +1,11 @@
 page-monitor {
     .strongly-greyed {
         color: grey;
-        // font-weight: bold;
+    }
+
+    .block-title {
+        color: #29b299;
+        font-weight: bold;
     }
 
     @mixin opaque-checkbox($color) {

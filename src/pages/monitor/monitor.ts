@@ -47,15 +47,11 @@ export class FridgeMonitorPage {
   }
 
   get storageItemCount(): number {
-    let count = 0;
-    this.items.forEach(item => count += item.stored)
-    return count;
+    return this.items.map(item => item.stored ? item.stored : 0).reduce((prev, cur) => +prev.valueOf() + +cur.valueOf());
   }
 
   get filterItemCount(): number {
-    let count = 0;
-    this.items.forEach(item => count += item.filterCount)
-    return count;
+    return this.items.map(item => item.filterCount).reduce((prev, cur) => +prev.valueOf() + +cur.valueOf());
   }
 
   unityForQuantity(item: Item, quantity: number): string {
