@@ -13,7 +13,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { keys } from '../config/firebase';
 import { GlobalStateProvider } from '../providers/global-state/global-state';
 
