@@ -33,5 +33,4 @@ ionic serve -c
 
 If everything is properly setup, your test is going to look like this:
 ![Status changes interaction](docs/status-changes.gif)
-And this:
 ![Status changes interaction](docs/item-manipulation.gif)
