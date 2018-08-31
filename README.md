@@ -1,3 +1,6 @@
+# Fridge Monitor
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b50cd56530d24e10aac785826d7e313b)](https://www.codacy.com/app/jcezarms/fridge-monitor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jcezarms/fridge-monitor&amp;utm_campaign=Badge_Grade)
+
 # Motivation
 Fridge Monitor is a proof-of-concept app meant to stand as an example of how straightforward and accessible can fridge management be. It was part of a larger set of projects presented at a brazilian federal university - UFABC - thus it's justified that the only supported language is Portuguese.
 
